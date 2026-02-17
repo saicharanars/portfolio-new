@@ -1,0 +1,55 @@
+---
+import SocialIcon from "./SocialIcon.astro";
+
+interface Social {
+  icon: "github" | "linkedIn" | "twitter" | "email" | "resume" | "link";
+  link: string;
+  title?: string;
+}
+
+const socials: Social[] = [
+  {
+    icon: "github",
+    link: "https://github.com/saicharanars",
+    title: "View GitHub Profile",
+  },
+  {
+    icon: "linkedIn",
+    link: "https://www.linkedin.com/in/sai-charan-arishanapally-fullstackdeveloper/",
+    title: "View LinkedIn Profile",
+  },
+  {
+    icon: "resume",
+    link: "https://drive.google.com/file/d/1AKcKhWDfMzV2SL7z2VUBruT-yrx9st96/view?usp=sharing",
+    title: "View resume",
+  },
+  {
+    icon: "link",
+    link: "https://saicharanars.vercel.app",
+    title: "view portfolio",
+  },
+  {
+    icon: "email",
+    link: "mailto:saicharan_@hotmail.com",
+    title: "Send Email",
+  },
+];
+---
+
+<!-- Start: Social Links -->
+<div class="flex flex-wrap gap-3 mt-6 justify-between">
+  {
+    socials.map((social) => (
+      <a
+        href={social.link}
+        target="_blank"
+        title={social.title}
+        rel="noopener noreferrer"
+        class="flex items-center justify-center w-10 h-10 rounded-lg bg-black text-gray-100 transition-all duration-150 border border-gray-600 hover:bg-primary hover:-translate-y-0.5"
+      >
+        <SocialIcon icon={social.icon} />
+      </a>
+    ))
+  }
+</div>
+<!-- End: Social Links -->

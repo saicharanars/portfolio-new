@@ -1,0 +1,120 @@
+---
+import { Code } from "astro:components";
+
+const code = `interface Developer {
+    name: string;
+    skills: string[];
+    interests: string[];
+};
+
+interface TechStack {
+    devOps: string[];
+    backend: string[];
+   frontend: string[];
+};
+
+type ContactType = 'github' | 'twitter' | 'linkedIn' | 'xing' | 'email';
+
+const techStack: TechStack = {
+    backend: [
+        'JavaScript',
+        'TypeScript',
+        'Express Js'
+        'Node.js',
+        'PostgreSQL',
+        'MySQL',
+        'S3 Storage',
+        'Nodemailer',
+        'MongoDB',
+        'Drizzle-Orm',
+        'Prisma',
+        'MongooseJs'
+        'JWT',
+        'OAuth',
+        'SocketIO',
+        'PM2',
+        'OpenAPI',
+        'Data Valiadation',
+        'Zod',
+        'Swagger',
+    ],
+       frontend: [
+        'Reactjs',
+        'Nextjs',
+        'HTML',
+        'CSS'
+        'TailwindCSS',
+        'redux',
+        'shadcn',
+        'bootstrap',
+        'RTK Query',
+        'Tanstack Table',
+        'Markdown',
+    ],
+        devOps: [
+        'GitLab',
+        'GitHub',
+        'Cloudflare',
+        'Docker',
+        'jenkins',
+    ],
+ 
+};
+
+// Developer profile
+const me: Developer = {
+    name: 'Sai Charan Arishanapally',
+    skills: [
+        ...techStack.devOps,
+        ...techStack.backend,
+        ...techStack.frontend
+    ],
+    interests: [
+        'Open Source',
+        'Security',
+        'Privacy',
+        'Performance',
+        'Self-Hosting',
+        'Networking'
+    ]
+};
+
+// Contact function
+const contact = (type: ContactType): string => {
+    switch (type) {
+        case 'github':
+            return 'https://github.com/saicharanars';
+        case 'linkedIn':
+            return 'https://www.linkedin.com/in/sai-charan-arishanapally-fullstackdeveloper/';
+        case 'email':
+            return 'saicharan_@hotmail.com';
+    }
+};
+
+`;
+---
+
+<Code code={code} lang="js" wrap={true} />
+
+<style is:global>
+  /* Custom styling for code block line numbers */
+  pre.astro-code {
+    @apply bg-transparent !important;
+  }
+
+  pre.astro-code code {
+    @apply block;
+    counter-reset: step;
+    counter-increment: step 0;
+  }
+
+  pre.astro-code code .line {
+    @apply relative;
+  }
+
+  pre.astro-code code .line::before {
+    content: counter(step);
+    counter-increment: step;
+    @apply text-gray-600 pr-2;
+  }
+</style>
